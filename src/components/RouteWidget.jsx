@@ -11,6 +11,20 @@ const RouteWidget = () => {
   const [length, setLength] = useState(0); // Lengde på kalkulert rute
   const [radius, setRadius] = useState(1.5); // Radius rundt brukerens posisjon
   const isMobile = navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i)
+  const radiusToLengthOptions = [
+    {
+      radius: 0.5,
+      meter: 3000
+    },
+    {
+      radius: 0.7,
+      meter: 5000
+    },
+    {
+      radius: 1.5,
+      meter: 10000
+    }
+  ];
 
   // Kalkuler ca antall skritt basert på rutens lengde
   const getSteps = (length) => {
@@ -44,8 +58,16 @@ const RouteWidget = () => {
     <div className={isMobile ? "widgetContainerMobile" : "widgetContainer"}>
       Hvor mange skritt vil du gå idag?
       <div style={{ margin: "20px" }}>
+        {/*
+					Her har vi allerede brukt TextField componentet fra Material UI. 
+					Material UI er en bibliotek med mange nyttige React komponenter vi kan bruke. 
+				*/}
         <TextField id="select" label="Skritt" value={radius} select onChange={(e) => setRadius(e.target.value)}>
-          {/* Vi ønsker å gi brukeren noen valg over hvor mange skritt som skal gås pr. rute */}
+          {/* 
+						Vi ønsker å gi brukeren noen valg over hvor mange skritt som skal gås pr. rute 
+						Her kan vi bruke MenuItem inni TextField komponenten for å vise en dropdown.
+						Dokumentasjonen for det er her: https://mui.com/material-ui/react-text-field/
+					*/}
         </TextField>
       </div>
       <Button variant="contained" color="primary" onClick={() => getRoute()}>
