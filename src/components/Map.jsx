@@ -18,7 +18,6 @@ const MapComponent = () => {
   const mapDiv = useRef(null);
   const context = useContext(AppContext);
   const [loaded, setLoaded] = useState(false);
-  const mapDiv = useRef(null);
 
   // Opprett kartet
   useEffect(() => {
@@ -32,7 +31,7 @@ const MapComponent = () => {
       });
 
       // Vi ønsker så å hente data som vi kan legge til i kartet.
-      // På følgende tjeneste finner dere punkter som viser en rekke turistatraksjoner i Europa:
+      // På følgende tjeneste finner dere punkter som viser en rekke turistattraksjoner i Europa:
       // Url: https://services-eu1.arcgis.com/zci5bUiJ8olAal7N/arcgis/rest/services/OSM_Tourism_EU/FeatureServer/0
       // Se dokumentasjonssiden for et eksempel: https://developers.arcgis.com/javascript/latest/add-a-feature-layer/
 
@@ -47,8 +46,8 @@ const MapComponent = () => {
       });
 
       // TODO: Legge hente data
-      // TODO: Legge til dataen i kartet
-      // TODO: Legg til dataen i context
+      // TODO: Legge til data i kartet
+      // TODO: Legg til data i context
 
       // For å kunne vise kartet må dette legges til i et MapView
       // Dokumentasjonen for MapView finnes her:
@@ -69,7 +68,7 @@ const MapComponent = () => {
           minZoom: 2,
           geometry: boundary
         };
-        // Når kartet er initialisert kan vi manipulere dataen her
+        // Når kartet er initialisert kan vi manipulere data her
 
       });
     }

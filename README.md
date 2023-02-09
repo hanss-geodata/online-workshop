@@ -1,6 +1,4 @@
 ## Getting Started
-This project was bootstrapped with Create React App.
-
 ### Quickstart
 ##### `git clone https://github.com/hanss-geodata/online-workshop-2023.git`
 ##### `npm install`
@@ -19,10 +17,10 @@ Målet med denne oppgaven er å vise data i et kart. For å oppnå dette må vi 
 
 Vi har lagt inn de nødvendige komponentene i koden, men konstruktørene mangler en del. For å kunne vise noe må disse fylles ut korrekt. For å se hva som mangler må API-dokumentasjonen til Esri brukes. Denne dokumentasjonen ligger på https://developers.arcgis.com/javascript/latest/api-reference/ Det er også mer informasjon i koden som beskriver hva som må gjøres.
 
-I tillegg til kartet og visningen må det legges til et datalag. Det finnes hjelpefunksjoner for å hente data samt opprette dette laget. Dette må implementeres og legges til i kartet.
+I tillegg til kartet og visningen må det legges til et datalag.
 
 ## Oppgave 2
-Her kan du fortsette på egen branch, eller starte på branch `step-2-add-widgets`
+Her kan du fortsette på branchen fra forrige oppgave, eller starte på branch `step-2-add-widgets`
 ### Legge til widgets
 Esri har mange widgets som er enkle å legge til i kartet, og i denne delen skal vi legge til en lokasjonswidget. Hvordan dette gjøres er godt dokumentert i API-dokumentasjonen. En god idé er å sette zoom nivået med scale attributten, f.eks scale 5000.
 
@@ -33,10 +31,10 @@ Her kan du fortsette på egen branch eller starte på branch `step-3-route-start
 ### Utvide widget
 I siste oppgave ønsker vi å utvide widgeten slik at brukeren kan velge selv hvor ruten skal starte. For å oppnå dette kan det implementeres med lokasjonswidgeten, eller med klikk i kartet. Implementasjonen er ganske lik for begge alternativene: Man lager en lytter på et event, og setter et koordinat inn i contexten.
 
-Det burde også legges til en grafikk i kartet som viser hvor startsstedet er. Dette skal tilsvare brukerens klikk. Esri har et API for grafikk, og man kan bruke `SimpleMarkerSymbol`, eller `CIMSymbol` for grafikken. `SimpleMarker` er enklest å ta i bruk, mens `CIM` gir flere muligheter for styling.
+Det burde også legges til en grafikk i kartet som viser hvor startstedet er. Dette skal tilsvare brukerens klikk. Esri har et API for grafikk, og man kan bruke `SimpleMarkerSymbol`, eller `CIMSymbol` for grafikken. `SimpleMarker` er enklest å ta i bruk, mens `CIM` gir flere muligheter for styling.
 
 En ferdig løsning finnes på branch `complete` og kan testet på https://hanss-geodata.github.io/online-workshop-2023/
 ## Videre arbeid
-Det er fremdeles en del som kan gjøres med denne applikasjonen. Slik som det er nå hentes alle punktene basert på hardkodede koordinater, Et mulig sted å begynne med forbedringer er å ta koordinatene basert på kartet. Det kan også jobbes mer med styling, eller man kan prøve å legge til flere nyttige Esri widgets.
+Det er fremdeles en del som kan gjøres med denne applikasjonen. Slik som det er nå hentes alle punktene basert på hardkodet koordinater, Et mulig sted å begynne med forbedringer er å ta koordinatene basert på kartet. Det kan også jobbes mer med styling, eller man kan prøve å legge til flere nyttige Esri widgets.
 
 Ellers oppfordrer vi til å prøve ut Esri-APIet selv, og lage noe helt eget. Det er mulig å ta utgangspunkt i steg 1 for å komme raskt i gang!
