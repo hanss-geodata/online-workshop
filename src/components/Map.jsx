@@ -5,8 +5,11 @@ import esriConfig from "@arcgis/core/config.js";
 import MapView from "@arcgis/core/views/MapView";
 import Map from "@arcgis/core/Map";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import Extent from "@arcgis/core/geometry/Extent";
 import PopupTemplate from "@arcgis/core/PopupTemplate";
 
+import cat from '../images/cat.gif';
+import { boundary } from "../utils/setup";
 import "../App.css";
 
 const MapComponent = () => {
@@ -14,7 +17,8 @@ const MapComponent = () => {
   esriConfig.assetsPath = "./assets";
   const mapDiv = useRef(null);
   const context = useContext(AppContext);
-  const [loaded, setLoaded] = useState(false) 
+  const [loaded, setLoaded] = useState(false);
+  const mapDiv = useRef(null);
 
   // Opprett kartet
   useEffect(() => {
@@ -38,8 +42,7 @@ const MapComponent = () => {
         title: "{name}",
         content: [{
           type: "text",
-          text: `<p>Type: {tourism}</p>
-<p>{description}</p>`
+          text: `<p>Type: {tourism}</p><p>{description}</p>`
         }]
       });
 
@@ -55,21 +58,31 @@ const MapComponent = () => {
       // xmin: 10.227928161621094,
       // ymax: 63.453731595863324,
       // xmax: 10.560264587402344
-      const view = new MapView({
+      new MapView({
         // MapView trenger minimum feltene:
         map,
         container: mapDiv.current
         // extent(valgfritt, men lurt å ha med)
-      }).when(() => {
-        setLoaded(true)
-        // Når kartet er initialisert kan vi manipulre dataen her
+      }).when((mapView) => {
+        setLoaded(true);
+        mapView.constraints = {
+          minZoom: 2,
+          geometry: boundary
+        };
+        // Når kartet er initialisert kan vi manipulere dataen her
+
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <>
-    { loaded ? "" : <p>map not loaded</p> }
+    { loaded ? "" : 
+      <div className="notLoadedMapContainer">
+        <img src={cat}/>
+        <p>{"Klarte ikke å vise kartet :("}</p>
+      </div> 
+    }
     <div className="mapDiv" ref={mapDiv} />
   </>;
 };
