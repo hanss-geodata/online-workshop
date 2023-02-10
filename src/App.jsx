@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   // Opprett store som sendes rundt til ulike komponenter
-  // esriConfig.apiKey = "AAPK52519f141ec04565b33944a7da4bc90fnViwerekXzgz0Xmo2l0frkfDum-JLaO1qlOfNgp6QFA4tUSOS_ZEur7zjsuqLFJu";
+  esriConfig.apiKey = "AAPK52519f141ec04565b33944a7da4bc90fnViwerekXzgz0Xmo2l0frkfDum-JLaO1qlOfNgp6QFA4tUSOS_ZEur7zjsuqLFJu";
   const [mapView, setMapView] = useState(null);
   const [featureLayer, setFeatureLayer] = useState(null);
   const [point, setPoint] = useState({

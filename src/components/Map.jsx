@@ -44,7 +44,7 @@ const MapComponent = () => {
       // Legg til data i kartet
       map.add(featureLayer);
 
-      // Legg til dataen i context
+      // Legg til data i context
       context.featureLayer.set(featureLayer);
 
       // For å kunne vise kartet må dette legges til i et MapView
