@@ -37,7 +37,7 @@ const RouteWidget = () => {
 
     getRandomRoute(point, radius, context).then((result) => {
       // Vi trenger å fjerne gamle ruter før vi legger til nye
-      // Hint: grafikken legges til MapView 
+      // Hint: grafikken legges til MapView
       const mapView = context.mapView.value;
 
       const route = result.data.routeResults[0].route;

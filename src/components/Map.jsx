@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 
 import esriConfig from "@arcgis/core/config.js";
 import MapView from "@arcgis/core/views/MapView";
@@ -22,21 +22,18 @@ const MapComponent = () => {
   // Opprett kartet
   useEffect(() => {
     if (mapDiv.current) {
-      // Det første vi trenger er et Map objekt med bakgrunnskart
-      // Konstruktøren er allerede i koden, men vi må velge bakgrunnskartet
-      // En liste med valg inner vi i API dokumentasjonen:
-      // https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
       const map = new Map({
-        basemap: "",
+        basemap: "gray-vector",
       });
 
-      // Vi ønsker så å hente data som vi kan legge til i kartet.
+      // Vi ønsker så å hente data som vi kan legge til i kartet. Til Dette trenger vi en FeatureLayer.
+      // Dette FeatureLayeret trenger en dataset fra f.eks. en tjeneste.
       // På følgende tjeneste finner dere punkter som viser en rekke turistattraksjoner i Europa:
       // Url: https://services-eu1.arcgis.com/zci5bUiJ8olAal7N/arcgis/rest/services/OSM_Tourism_EU/FeatureServer/0
       // Se dokumentasjonssiden for et eksempel: https://developers.arcgis.com/javascript/latest/add-a-feature-layer/
 
       // Om man ønsker å ha en popup når man trykker på punktene i FeatureLayeret trenger man også å legge
-      // inn en popup template i featurelayeret. Denne har vi ferdig definert her.
+      // inn en popup template i Featurelayeret. Denne har vi ferdig definert her.
       const popUpTemplate = new PopupTemplate({
         title: "{name}",
         content: [{
@@ -44,17 +41,25 @@ const MapComponent = () => {
           text: `<p>Type: {tourism}</p><p>{description}</p>`
         }]
       });
+      
+      // TODO: Hente data fra dataset som er oppgitt
+      // TODO: Legge til data i laget 
+
+      // TODO: Legge inn template for popup (valgfritt) 
+
+      // TODO: Legg til laget med data i context 
+      // Tips: sjekk App.jsx for å se hvilke metoder vi har tilgjengelig i store
+      
       // Legg til dataen i kartet
       map.add(featureLayer);
 
-      // TODO: Legge hente data
-      // TODO: Legge til data i kartet
-      // TODO: Legg til data i context
+      // Videre ønsker vi å legge inn en Locate widget i kartet. 
+      // Dette lar oss se hvor på kartet vi befinner oss. Mer om dette finnes på siden:
+      // https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html#on
 
-      // For å kunne vise kartet må dette legges til i et MapView
-      // Dokumentasjonen for MapView finnes her:
-      // https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html
+      //TODO Opprett Locate widget og legg det til i MapViewet.
 
+    
       new MapView({
         map: map,
         container: mapDiv.current,
@@ -65,12 +70,14 @@ const MapComponent = () => {
           xmax: 10.560264587402344,
         },
       }).when((mapView) => {
+        // Når kartet er initialisert kan vi manipulere data her
         setLoaded(true)
         mapView.constraints = {
           minZoom: 2,
           geometry: boundary
         };
-        // Når kartet er initialisert kan vi manipulere data her
+
+        //Legg til Locate Widgeten her.
 
       });
     }
