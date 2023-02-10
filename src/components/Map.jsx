@@ -30,7 +30,8 @@ const MapComponent = () => {
         basemap: "",
       });
 
-      // Vi ønsker så å hente data som vi kan legge til i kartet.
+      // Vi ønsker så å hente data som vi kan legge til i kartet. Til Dette trenger vi en FeatureLayer.
+      // Dette FeatureLayeret trenger en dataset fra f.eks. en tjeneste.
       // På følgende tjeneste finner dere punkter som viser en rekke turistattraksjoner i Europa:
       // Url: https://services-eu1.arcgis.com/zci5bUiJ8olAal7N/arcgis/rest/services/OSM_Tourism_EU/FeatureServer/0
       // Se dokumentasjonssiden for et eksempel: https://developers.arcgis.com/javascript/latest/add-a-feature-layer/
@@ -45,9 +46,13 @@ const MapComponent = () => {
         }]
       });
 
-      // TODO: Hente data
-      // TODO: Legge til data i kartet
-      // TODO: Legg til data i context
+      // TODO: Hente data fra dataset som er oppgitt
+      // TODO: Legge til data i laget 
+
+      // TODO: Legge inn template for popup (valgfritt) 
+
+      // TODO: Legg til laget med data i context 
+      // Tips: sjekk App.jsx for å se hvilke metoder vi har tilgjengelig i store
 
       // For å kunne vise kartet må dette legges til i et MapView
       // Dokumentasjonen for MapView finnes her:
