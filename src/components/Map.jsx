@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useEffect, useContext, useState } from "react";
 
 import esriConfig from "@arcgis/core/config.js";
 import MapView from "@arcgis/core/views/MapView";
@@ -44,10 +44,8 @@ const MapComponent = () => {
           text: `<p>Type: {tourism}</p><p>{description}</p>`
         }]
       });
-      // Legg til dataen i kartet
-      map.add(featureLayer);
 
-      // TODO: Legge hente data
+      // TODO: Hente data
       // TODO: Legge til data i kartet
       // TODO: Legg til data i context
 
