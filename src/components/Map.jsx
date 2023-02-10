@@ -5,6 +5,8 @@ import MapView from "@arcgis/core/views/MapView";
 import Map from "@arcgis/core/Map";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Extent from "@arcgis/core/geometry/Extent";
+import Locate from "@arcgis/core/widgets/Locate";
+
 import PopupTemplate from "@arcgis/core/PopupTemplate";
 
 import cat from '../images/cat.gif';
@@ -41,25 +43,18 @@ const MapComponent = () => {
           text: `<p>Type: {tourism}</p><p>{description}</p>`
         }]
       });
-      
-      // TODO: Hente data fra dataset som er oppgitt
-      // TODO: Legge til data i laget 
 
-      // TODO: Legge inn template for popup (valgfritt) 
-
-      // TODO: Legg til laget med data i context 
-      // Tips: sjekk App.jsx for å se hvilke metoder vi har tilgjengelig i store
+      // Hent data
+      const featureLayer = new FeatureLayer({
+        url: "https://services-eu1.arcgis.com/zci5bUiJ8olAal7N/arcgis/rest/services/OSM_Tourism_EU/FeatureServer/0",
+        popupEnabled: true,
+        popupTemplate: popUpTemplate,
+        }
+      );
       
       // Legg til dataen i kartet
       map.add(featureLayer);
 
-      // Videre ønsker vi å legge inn en Locate widget i kartet. 
-      // Dette lar oss se hvor på kartet vi befinner oss. Mer om dette finnes på siden:
-      // https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html#on
-
-      //TODO Opprett Locate widget og legg det til i MapViewet.
-
-    
       new MapView({
         map: map,
         container: mapDiv.current,
@@ -77,7 +72,16 @@ const MapComponent = () => {
           geometry: boundary
         };
 
-        //Legg til Locate Widgeten her.
+        // Esri har mange widgets som er enkle å legge til i kartet
+        // En av disse er locate widgeten, som flytter kartet til din posisjon
+        // Widgeten må først opprettes, så plasseres på kartet
+        // Dokumentasjon for dette er på:
+        // https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html
+        // En god idé er å sette zoom nivået med scale attributten, f. eks scale 5000
+
+        //TODO opprett Locate widget
+
+        //TODO legg til vidget i MapViewet
 
       });
     }
