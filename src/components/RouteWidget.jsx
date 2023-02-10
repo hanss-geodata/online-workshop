@@ -25,8 +25,6 @@ const RouteWidget = () => {
       // Vi trenger å fjerne gamle ruter før vi legger til nye
       // Hint: grafikken legges til MapView 
       const mapView = context.mapView.value;
-      const oldLine = mapView.graphics.items.filter((item) => { return item.geometry.type === "polyline" })[0];
-      mapView.graphics.remove(oldLine);
       const route = result.data.routeResults[0].route;
 
       route.attributes.name = "route";
